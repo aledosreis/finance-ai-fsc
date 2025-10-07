@@ -54,7 +54,7 @@ const PlanCard = ({
           </div>
         ))}
 
-        <AcquirePlanButton />
+        {plan.slug !== "basic" && <AcquirePlanButton />}
       </CardContent>
     </Card>
   );
