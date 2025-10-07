@@ -1,4 +1,3 @@
-import { db } from "../_lib/prisma";
 import { DataTable } from "../_components/ui/data-table";
 import { transactionColumns } from "./_columns";
 import AddTransactionButton from "../_components/add-transaction-button";
@@ -7,20 +6,15 @@ import { auth } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import { ScrollArea } from "../_components/ui/scroll-area";
 import { canUserAddTransaction } from "../_data/can-user-add-transaction";
+import { getTransactions } from "../_data/get-transactions";
 
 const TransactionsPage = async () => {
   const { userId } = await auth();
   if (!userId) {
     redirect("/login");
   }
-  const transactions = await db.transaction.findMany({
-    where: {
-      userId,
-    },
-    orderBy: {
-      date: "desc",
-    },
-  });
+  const transactions = getTransactions(userId);
+
   const userCanAddTransaction = await canUserAddTransaction();
 
   return (
