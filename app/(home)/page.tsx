@@ -1,15 +1,15 @@
 import { auth, clerkClient } from "@clerk/nextjs/server";
 import { redirect } from "next/navigation";
 import Navbar from "../_components/navbar";
-import SummaryCards from "./_components/summary-cards";
-import TimeSelect from "./_components/time-select";
+import SummaryCards from "../_components/summary-cards";
+import TimeSelect from "../_components/time-select";
 import { isMatch } from "date-fns";
-import TransactionsPieChart from "./_components/transactions-pie-chart";
+import TransactionsPieChart from "../_components/transactions-pie-chart";
 import { getDashboard } from "../_data/get-dashboard";
-import ExpensesPerCategory from "./_components/expenses-per-category";
-import LastTransactions from "./_components/last-transactions";
+import ExpensesPerCategory from "../_components/expenses-per-category";
+import LastTransactions from "../_components/last-transactions";
 import { canUserAddTransaction } from "../_data/can-user-add-transaction";
-import AiReportButton from "./_components/ai-report-button";
+import AiReportButton from "../_components/ai-report-button";
 
 interface HomeProps {
   searchParams: {

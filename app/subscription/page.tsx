@@ -2,7 +2,7 @@ import { auth, clerkClient } from "@clerk/nextjs/server";
 import Navbar from "../_components/navbar";
 import { redirect } from "next/navigation";
 import { getCurrentMonthTransactions } from "../_data/get-current-month-transactions";
-import PlanCard, { Plan } from "./_components/plan-card";
+import PlanCard, { Plan } from "../_components/plan-card";
 
 const subscriptionPlans: Plan[] = [
   {
