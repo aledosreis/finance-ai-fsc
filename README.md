@@ -2,6 +2,8 @@
 
 Este é um projeto desenvolvido durante um bootcamp do [Full Stack Club](https://fullstackclub.com.br/), que consiste em uma aplicação de gerenciamento financeiro com recursos de IA para análise de gastos.
 
+> **Observação:** A versão atual na branch `main` contém modificações e melhorias em relação ao projeto original. A versão desenvolvida durante o bootcamp está disponível na branch `bootcamp`.
+
 ## 🚀 Tecnologias Utilizadas
 
 - [Next.js 14](https://nextjs.org/) - Framework React com Server Components
@@ -13,6 +15,7 @@ Este é um projeto desenvolvido durante um bootcamp do [Full Stack Club](https:/
 - [Clerk](https://clerk.dev/) - Autenticação e gerenciamento de usuários
 - [Stripe](https://stripe.com/) - Processamento de pagamentos
 - [OpenAI](https://openai.com/) - API de Inteligência Artificial
+- [Gemini](https://ai.google.dev/) - API de IA generativa do Google (utilizada junto a biblioteca do OpenAI)
 - [Recharts](https://recharts.org/) - Biblioteca de gráficos para React
 
 ## 💡 Funcionalidades
@@ -54,7 +57,7 @@ STRIPE_PREMIUM_PLAN_PRICE_ID=
 NEXT_PUBLIC_STRIPE_CUSTOMER_PORTAL_URL=
 
 # OpenAI
-OPENAI_API_KEY=
+GEMINI_API_KEY=
 
 # App
 APP_URL=
@@ -91,10 +94,11 @@ APP_URL=
      - Configure o portal do cliente
      - Copie a URL do portal (formato: https://billing.stripe.com/p/...)
 
-4. **OpenAI**:
-   - Acesse o [Dashboard da OpenAI](https://platform.openai.com/api-keys)
-   - Crie uma nova API key
-   - Copie o valor para `OPENAI_API_KEY`
+4. **Gemini**:
+   - Acesse o [Google AI Studio](https://aistudio.google.com/app/apikey)
+   - Faça login com sua conta Google
+   - Clique em "Create API key"
+   - Copie o valor gerado e utilize em `GEMINI_API_KEY`
 
 5. **App**:
    - Para desenvolvimento local, use `APP_URL="http://localhost:3000"`
