@@ -1,12 +1,13 @@
-import { db } from "@/app/_lib/prisma";
+import { db } from "@/app/_lib/db";
+import { auth } from "@clerk/nextjs/server";
 
-export const getTransactions = async (userId: string) => {
-  return await db.transaction.findMany({
-    where: {
-      userId,
-    },
-    orderBy: {
-      date: "desc",
-    },
+export const getTransactions = async () => {
+  const { userId } = await auth();
+  if (!userId) {
+    throw new Error("Unauthorized");
+  }
+  return await db.query.transaction.findMany({
+    where: (transaction, { eq }) => eq(transaction.userId, userId),
+    orderBy: (transaction, { desc }) => [desc(transaction.date)],
   });
 };

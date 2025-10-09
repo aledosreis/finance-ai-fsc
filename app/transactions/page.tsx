@@ -13,7 +13,7 @@ const TransactionsPage = async () => {
   if (!userId) {
     redirect("/login");
   }
-  const transactions = await getTransactions(userId);
+  const transactions = await getTransactions();
 
   const userCanAddTransaction = await canUserAddTransaction();
 
