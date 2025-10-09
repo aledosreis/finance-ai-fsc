@@ -33,11 +33,11 @@ export const transaction = pgTable("Transaction", {
   type: transactionType().notNull(),
   category: transactionCategory().notNull(),
   paymentMethod: transactionPaymentMethod().notNull(),
-  date: timestamp({ precision: 3, mode: "string" }).notNull(),
-  createdAt: timestamp({ precision: 3, mode: "string" })
+  date: timestamp({ precision: 3 }).notNull(),
+  createdAt: timestamp({ precision: 3 })
     .default(sql`CURRENT_TIMESTAMP`)
     .notNull(),
-  updatedAt: timestamp({ precision: 3, mode: "string" }).notNull(),
+  updatedAt: timestamp({ precision: 3 }).notNull(),
   userId: text().notNull(),
   amount: numeric({ precision: 10, scale: 2 }).notNull(),
 });
