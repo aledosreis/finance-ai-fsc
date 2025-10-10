@@ -1,5 +1,11 @@
-import { pgTable, text, timestamp, numeric, pgEnum } from "drizzle-orm/pg-core";
-import { sql } from "drizzle-orm";
+import {
+  pgTable,
+  text,
+  timestamp,
+  numeric,
+  pgEnum,
+  uuid,
+} from "drizzle-orm/pg-core";
 
 export const transactionCategory = pgEnum("TransactionCategory", [
   "HOUSING",
@@ -27,17 +33,18 @@ export const transactionType = pgEnum("TransactionType", [
   "INVESTMENT",
 ]);
 
-export const transaction = pgTable("Transaction", {
-  id: text().primaryKey().notNull(),
-  name: text().notNull(),
-  type: transactionType().notNull(),
-  category: transactionCategory().notNull(),
-  paymentMethod: transactionPaymentMethod().notNull(),
-  date: timestamp({ precision: 3 }).notNull(),
-  createdAt: timestamp({ precision: 3 })
-    .default(sql`CURRENT_TIMESTAMP`)
-    .notNull(),
-  updatedAt: timestamp({ precision: 3 }).notNull(),
-  userId: text().notNull(),
-  amount: numeric({ precision: 10, scale: 2 }).notNull(),
+export const transaction = pgTable("transaction", {
+  id: uuid("id").primaryKey().defaultRandom(),
+  name: text("name").notNull(),
+  type: transactionType("type").notNull(),
+  category: transactionCategory("category").notNull(),
+  paymentMethod: transactionPaymentMethod("payment_method").notNull(),
+  date: timestamp("date", { precision: 3 }).notNull(),
+  createdAt: timestamp("created_at", { precision: 3 }).notNull().defaultNow(),
+  updatedAt: timestamp("updated_at", { precision: 3 })
+    .notNull()
+    .defaultNow()
+    .$onUpdate(() => new Date()),
+  userId: text("user_id").notNull(),
+  amount: numeric("amount", { precision: 10, scale: 2 }).notNull(),
 });
