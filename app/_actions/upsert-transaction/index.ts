@@ -52,12 +52,5 @@ export const upsertTransaction = async (params: UpsertTransactionParams) => {
       })
       .where(eq(transaction.id, params.id));
   }
-  // await dbPrisma.transaction.upsert({
-  //   update: { ...params, userId },
-  //   create: { ...params, userId },
-  //   where: {
-  //     id: params?.id ?? "",
-  //   },
-  // });
   revalidatePath("/transactions");
 };
