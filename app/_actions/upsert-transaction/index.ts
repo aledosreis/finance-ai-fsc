@@ -8,7 +8,6 @@ import {
 } from "@prisma/client";
 import { upsertTransactionSchema } from "./schema";
 import { revalidatePath } from "next/cache";
-// import { db as dbPrisma } from "@/app/_lib/prisma";
 import { db } from "@/app/_lib/db";
 import { transaction } from "@/app/_lib/db/schema";
 import { eq } from "drizzle-orm";
