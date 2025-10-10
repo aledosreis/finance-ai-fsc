@@ -10,12 +10,12 @@ Este é um projeto desenvolvido durante um bootcamp do [Full Stack Club](https:/
 - [TypeScript](https://www.typescriptlang.org/) - Superset JavaScript com tipagem estática
 - [Tailwind CSS](https://tailwindcss.com/) - Framework CSS utilitário
 - [Shadcn/ui](https://ui.shadcn.com/) - Biblioteca de componentes React
-- [Prisma](https://www.prisma.io/) - ORM para Node.js e TypeScript
+- [Drizzle ORM](https://orm.drizzle.team/) - ORM para Node.js e TypeScript
 - [PostgreSQL](https://www.postgresql.org/) - Banco de dados relacional
 - [Clerk](https://clerk.dev/) - Autenticação e gerenciamento de usuários
 - [Stripe](https://stripe.com/) - Processamento de pagamentos
 - [OpenAI](https://openai.com/) - API de Inteligência Artificial
-- [Gemini](https://ai.google.dev/) - API de IA generativa do Google (utilizada junto a biblioteca do OpenAI)
+- [Gemini](https://ai.google.dev/) - API de IA generativa do Google (utilizada em conjunto com a biblioteca do OpenAI)
 - [Recharts](https://recharts.org/) - Biblioteca de gráficos para React
 
 ## 💡 Funcionalidades
