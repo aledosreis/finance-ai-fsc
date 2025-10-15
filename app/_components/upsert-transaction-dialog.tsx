@@ -12,11 +12,6 @@ import {
   DialogTrigger,
 } from "./ui/dialog";
 import { z } from "zod";
-import {
-  TransactionCategory,
-  TransactionPaymentMethod,
-  TransactionType,
-} from "@prisma/client";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import {
@@ -43,6 +38,11 @@ import {
 } from "../_constants/transactions";
 import { DatePicker } from "./ui/date-picker";
 import { upsertTransaction } from "../_actions/upsert-transaction";
+import {
+  transactionCategoryValues,
+  transactionPaymentMethodValues,
+  transactionTypeValues,
+} from "../_lib/db/types";
 
 interface UpsertTransactionDialogProps {
   isOpen: boolean;
@@ -60,13 +60,13 @@ const formSchema = z.object({
     .positive({
       message: "O valor deve ser positivo",
     }),
-  type: z.nativeEnum(TransactionType, {
+  type: z.nativeEnum(transactionTypeValues, {
     required_error: "O tipo é obrigatório",
   }),
-  category: z.nativeEnum(TransactionCategory, {
+  category: z.nativeEnum(transactionCategoryValues, {
     required_error: "A categoria é obrigatória",
   }),
-  paymentMethod: z.nativeEnum(TransactionPaymentMethod, {
+  paymentMethod: z.nativeEnum(transactionPaymentMethodValues, {
     required_error: "O método de pagamento é obrigatório",
   }),
   date: z.date({ required_error: "A data é obrigatória" }),
@@ -84,11 +84,11 @@ const UpsertTransactionDialog = ({
     resolver: zodResolver(formSchema),
     defaultValues: defaultValues ?? {
       amount: 50,
-      category: TransactionCategory.OTHER,
+      category: transactionCategoryValues.OTHER,
       date: new Date(),
       name: "",
-      paymentMethod: TransactionPaymentMethod.CASH,
-      type: TransactionType.EXPENSE,
+      paymentMethod: transactionPaymentMethodValues.CASH,
+      type: transactionTypeValues.EXPENSE,
     },
   });
 

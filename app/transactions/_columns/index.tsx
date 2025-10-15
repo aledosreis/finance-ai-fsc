@@ -1,6 +1,5 @@
 "use client";
 
-import { Transaction } from "@prisma/client";
 import { ColumnDef } from "@tanstack/react-table";
 import TransactionTypeBadge from "../../_components/type-badge";
 import {
@@ -9,6 +8,7 @@ import {
 } from "@/app/_constants/transactions";
 import EditTransactionButton from "../../_components/edit-transaction-button";
 import DeleteTransactionButton from "../../_components/delete-transaction-button";
+import { Transaction } from "@/app/_lib/db/types";
 
 export const transactionColumns: ColumnDef<Transaction>[] = [
   {

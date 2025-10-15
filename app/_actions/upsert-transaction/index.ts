@@ -1,16 +1,16 @@
 "use server";
 
 import { auth } from "@clerk/nextjs/server";
-import {
-  TransactionCategory,
-  TransactionPaymentMethod,
-  TransactionType,
-} from "@prisma/client";
 import { upsertTransactionSchema } from "./schema";
 import { revalidatePath } from "next/cache";
 import { db } from "@/app/_lib/db";
 import { transaction } from "@/app/_lib/db/schema";
 import { eq } from "drizzle-orm";
+import {
+  TransactionCategory,
+  TransactionType,
+  TransactionPaymentMethod,
+} from "@/app/_lib/db/types";
 
 interface UpsertTransactionParams {
   id?: string;

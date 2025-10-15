@@ -1,9 +1,9 @@
-import { TransactionType } from "@prisma/client";
 import { TotalExpensePerCategory, TransactionPercentagePerType } from "./types";
 import { auth } from "@clerk/nextjs/server";
 import { and, eq, gte, lt, sum } from "drizzle-orm";
 import { transaction } from "@/app/_lib/db/schema";
 import { db } from "@/app/_lib/db";
+import { transactionTypeValues } from "@/app/_lib/db/types";
 
 export const getDashboard = async (month: string) => {
   const { userId } = await auth();
@@ -75,11 +75,11 @@ export const getDashboard = async (month: string) => {
       )[0].sum,
     ) || 0;
   const typesPercentage: TransactionPercentagePerType = {
-    [TransactionType.DEPOSIT]:
+    [transactionTypeValues.DEPOSIT]:
       Math.round((depositsTotal / transactionsTotal) * 100) || 0,
-    [TransactionType.EXPENSE]:
+    [transactionTypeValues.EXPENSE]:
       Math.round((expensesTotal / transactionsTotal) * 100) || 0,
-    [TransactionType.INVESTMENT]:
+    [transactionTypeValues.INVESTMENT]:
       Math.round((investmentsTotal / transactionsTotal) * 100) || 0,
   };
 

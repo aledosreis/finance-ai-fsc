@@ -132,10 +132,10 @@ npm install
    - Crie um novo projeto
    - Copie a string de conexão e atualize a variável `DATABASE_URL` no arquivo `.env`
 
-4. Execute as migrações do banco de dados:
+4. Crie as tabelas no banco de dados:
 
    ```bash
-   npx prisma migrate dev
+   npx drizzle-kit push
    ```
 
 5. Inicie o servidor de desenvolvimento:

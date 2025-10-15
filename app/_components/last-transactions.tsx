@@ -3,9 +3,9 @@ import { CardContent, CardHeader, CardTitle } from "@/app/_components/ui/card";
 import { ScrollArea } from "@/app/_components/ui/scroll-area";
 import { TRANSACTION_PAYMENT_METHOD_ICONS } from "@/app/_constants/transactions";
 import { formatCurrency } from "@/app/_utils/currency";
-import { Transaction, TransactionType } from "@prisma/client";
 import Image from "next/image";
 import Link from "next/link";
+import { Transaction, transactionTypeValues } from "../_lib/db/types";
 
 interface LastTransactionsProps {
   lastTransactions: Transaction[];
@@ -13,17 +13,17 @@ interface LastTransactionsProps {
 
 const LastTransactions = ({ lastTransactions }: LastTransactionsProps) => {
   const getAmountColor = (transaction: Transaction) => {
-    if (transaction.type === TransactionType.EXPENSE) {
+    if (transaction.type === transactionTypeValues.EXPENSE) {
       return "text-red-500";
     }
-    if (transaction.type === TransactionType.DEPOSIT) {
+    if (transaction.type === transactionTypeValues.DEPOSIT) {
       return "text-primary";
     }
     return "text-white";
   };
 
   const getAmountPrefix = (transaction: Transaction) => {
-    if (transaction.type === TransactionType.DEPOSIT) {
+    if (transaction.type === transactionTypeValues.DEPOSIT) {
       return "+";
     }
     return "-";
